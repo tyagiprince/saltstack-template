@@ -2,6 +2,7 @@ import pytest
 import salt.config
 import salt.loader
 import salt.client
+from utils.path import PathHelper
 # import watchdog
 # import time
 
@@ -39,6 +40,9 @@ def __envs__():
     return ['base', 'dev', 'stg', 'prd']
 
 
+@pytest.fixture
+def path_helper():
+    return PathHelper
 # from watchdog.observers import Observer
 # from watchdog.events import PatternMatchingEventHandler
 # class MyEventHandler(PatternMatchingEventHandler):
@@ -49,16 +53,16 @@ def __envs__():
 #         self.files.append(event.src_path)
 
 
-@pytest.fixture
-def filesystem_watch(env, state):
-    pass
-    # event_handler = MyEventHandler(ignore_patterns=["/var/cache/*", "/var/log/*", "/tmp/*"])
-    # observer = Observer()
-    # observer.schedule(event_handler, "/", recursive=True)
-    # observer.start()
-    # yield
-    # time.sleep(2)
-    # observer.stop()
-    # observer.join()
-    # print event_handler.files
-    # assert False
+# @pytest.fixture
+# def filesystem_watch(env, state):
+#     pass
+#     event_handler = MyEventHandler(ignore_patterns=["/var/cache/*", "/var/log/*", "/tmp/*"])
+#     observer = Observer()
+#     observer.schedule(event_handler, "/", recursive=True)
+#     observer.start()
+#     yield
+#     time.sleep(2)
+#     observer.stop()
+#     observer.join()
+#     print event_handler.files
+#     assert False
